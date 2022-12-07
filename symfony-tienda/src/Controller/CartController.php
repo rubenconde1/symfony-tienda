@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Controller;
-
 use App\Entity\Product;
 use App\Service\CartService;
+use App\Service\ProductsService;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 #[Route(path:'/cart')]
 class CartController extends AbstractController
@@ -16,8 +17,7 @@ class CartController extends AbstractController
     private $doctrine;
     private $repository;
     private $cart;
-
-    public function __construct(ManagerRegistry $doctrine, CartService $cart)
+    public  function __construct(ManagerRegistry $doctrine, CartService $cart)
     {
         $this->doctrine = $doctrine;
         $this->repository = $doctrine->getRepository(Product::class);
@@ -44,27 +44,27 @@ class CartController extends AbstractController
         }
     
         return $this->render('cart/index.html.twig', ['items' => $items, 'totalCart' => $totalCart]);
-    }    
-    
-
-    #[Route('/add/{id}', name:'cart_add', methods:['GET', 'POST'], requirements:['id' => '\d+'])]
-    public function cart_add(int $id): Response {
+    }
+    #[Route('/add/{id}', name: 'cart_add', methods: ['GET', 'POST'], requirements: ['id' => '\d+'])]
+    public function cart_add(int $id): Response
+    {
         $product = $this->repository->find($id);
         if (!$product)
             return new JsonResponse("[]", Response::HTTP_NOT_FOUND);
-
-            $this->cart->add($id, 1);
-
-            $data = [
-                "id" => $product->getId(),
-                "name" => $product->getName(),
-                "price" => $product->getPrice(),
-                "photo" => $product->getPhoto(),
-                "quantity" => $this->cart->getCart()[$product->getId()]
+        
+        $this->cart->add($id, 1);
+        
+        $data = [
+            "id"=> $product->getId(),
+            "name" => $product->getName(),
+            "price" => $product->getPrice(),
+            "photo" => $product->getPhoto(),
+            "quantity" => $this->cart->getCart()[$product->getId()],
+            "totalItems" => $this->cart->totalItems()
             ];
-            return new JsonResponse($data, Response::HTTP_OK);
+        return new JsonResponse($data, Response::HTTP_OK);
+        
     }
-
     #[Route('/update/{id}/{quantity}', name: 'cart_update', methods: ['POST'], requirements: ['id' => '\d+'])]
     public function cart_update(int $id, int $quantity = 1): Response
     {
