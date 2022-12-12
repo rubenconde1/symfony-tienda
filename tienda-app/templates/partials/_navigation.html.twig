@@ -1,0 +1,18 @@
+<div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+    <div class="menu-area">
+        <div class="limit-box">
+            <nav class="main-menu">
+                <ul class="menu-area-main">
+                    <li><a href="{{ path('index') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'index')  ? 'active': ''}}">Home</a> </li>
+                    <li><a href="{{ path('about') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'index')  ? 'active': ''}}">About</a> </li>
+                    <li><a href="{{ path('brand') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'index')  ? 'active': ''}}">Brand</a></li>
+                    <li><a href="{{ path('special') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'index')  ? 'active': ''}}">Specials</a></li>
+                    <li><a href="{{ path('contact') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'index')  ? 'active': ''}}">Contact Us</a></li>
+                    <li class="last">
+                        <a href="#"><img src="images/search_icon.png" alt="icon" /></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
