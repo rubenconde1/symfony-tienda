@@ -10,22 +10,26 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PageController extends AbstractController
 {
+    public function teamTemplate(ManagerRegistry $doctrine): Response
+    {
+    $repository = $doctrine->getRepository(Team::class);
+    $team = $repository->findAll();
+    return $this->render('partials/_team.html.twig',compact('team'));
+    }
+
+
     #[Route('/', name: 'index')]
     public function index(ManagerRegistry $doctrine): Response
     {
-        $repository = $doctrine->getRepository(Team::class);
-        $team = $repository->findAll();
-        return $this->render('page/index.html.twig', compact('team'));
+        return $this->render('page/index.html.twig');
     }
     
-
     #[Route('/about', name: 'about')]
     public function about(ManagerRegistry $doctrine): Response
     {
-        $repository = $doctrine->getRepository(Team::class);
-        $team = $repository->findAll();
-        return $this->render('page/about.html.twig', compact('team'));
+        return $this->render('page/about.html.twig');
     }
+    
     
 
     #[Route('/contact', name: 'contact')]
