@@ -16,6 +16,8 @@
     <meta name="author" content="">
     <!-- bootstrap css -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="{{asset('lib/flaticon/font/flaticon.css')}}" rel="stylesheet">
     <!-- style css -->
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <!-- Responsive-->
@@ -118,8 +120,11 @@
         </div>
     </footer>
     <!-- end footer -->
+    {% include('partials/_infoProducto.html.twig') %}
+    {% include('partials/_cartModal.html.twig') %}
     <!-- Javascript files-->
     <script src="js/jquery.min.js"></script>
+    <script src="{{asset('js/app.js')}}"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery-3.0.0.min.js"></script>
