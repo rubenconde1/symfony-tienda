@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Service\ProductsService;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,9 +11,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends AbstractController
 {
     #[Route('/brand', name: 'brand')]
-    public function brand(): Response
+    public function index(ProductsService $productsService): Response
     {
-        return $this->render('product/brand.html.twig', []);
+        $products = $productsService->getProducts();
+        return $this->render('product/brand.html.twig', compact('products'));
     }
 
     #[Route('/special', name: 'special')]
