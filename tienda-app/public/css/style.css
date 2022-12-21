@@ -1032,6 +1032,21 @@ ul.top_icon li a {
      position: relative;
 }
 
+.show-products{
+     background-color: blue;
+     color: white;
+     font-weight: bold;
+}
+
+.updateBtn{
+     margin-left: 1rem;
+     padding: 3px;
+     border-radius: 10%;
+     color: white;
+     font-weight: bold;
+     background-color: blue
+}
+
 .wish-box a span.icon span {
      position: absolute;
      right: -8px;
