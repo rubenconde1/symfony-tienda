@@ -177,7 +177,7 @@ ul.social_icon {display: none !important;}
     .last {display: none;}
     .location_icon_bottum {display: none;}
     .logo {padding-top: 7px;}
-    .mean-container .mean-bar {background: #000;}
+    .mean-container .mean-bar {background: red;}
     .mean-container .mean-bar {margin-left: 20px;}
     .banner-main .carousel-caption span {font-size: 25px; line-height: 19px;}
 .banner-main .carousel-caption h1 {font-size: 30px; line-height: 40px;}
