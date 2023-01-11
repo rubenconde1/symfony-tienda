@@ -20,25 +20,28 @@
             <div class="row">
                 <div class="col-md-12">
 
-                    <form class="main_form">
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                <input class="form-control" placeholder="Your name" type="text" name="Your Name">
+                    {{ form_start(form, {'attr': {'class':'form-horizontal'}}) }}
+                        {{ form_errors(form) }}
+                            <div class="form-group">
+                                <div class="col-xs-6">
+                                    {{ form_row(form.name, {'attr': {'class':'form-control'}}) }}
+                                </div>  
                             </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                <input class="form-control" placeholder="Email" type="text" name="Email">
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    {{ form_row(form.email, {'attr': {'class':'form-control'}}) }}
+                                </div>
+                                <div class="col-xs-12">
+                                    {{ form_row(form.phone, {'attr': {'class':'form-control'}}) }}
+                                </div>
                             </div>
-                            <div class=" col-md-12">
-                                <input class="form-control" placeholder="Phone" type="text" name="Phone">
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    {{ form_row(form.message, {'attr': {'class':'form-control'}}) }}
+                                    {{ form_row(form.Send, {'attr': {'class':'pull-right btn btn-lg sr-button'}}) }}
+                                </div>
                             </div>
-                            <div class="col-md-12">
-                                <textarea class="textarea" placeholder="Message"></textarea>
-                            </div>
-                            <div class=" col-md-12">
-                                <button class="send">Send</button>
-                            </div>
-                        </div>
-                    </form>
+                        {{ form_end(form) }}
                 </div>
             </div>
         </div>
