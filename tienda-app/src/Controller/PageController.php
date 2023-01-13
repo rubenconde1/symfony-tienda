@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Contact;
 use App\Entity\Team;
 use App\Form\ContactFormType;
@@ -23,10 +24,13 @@ class PageController extends AbstractController
 
 
     #[Route('/', name: 'index')]
-    public function index(ProductsService $productsService): Response
+    public function index(ProductsService $productsService, ManagerRegistry $doctrine, Request $request): Response
     {
+        $repository = $doctrine->getRepository(Category::class);
+        $categories = $repository->findAll();
+        
         $products = $productsService->getProducts();
-        return $this->render('page/index.html.twig', compact('products'));
+        return $this->render('page/index.html.twig', compact('products', 'categories'));
     }
     
     #[Route('/about', name: 'about')]
